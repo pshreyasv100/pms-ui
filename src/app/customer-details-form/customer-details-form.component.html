@@ -1,0 +1,97 @@
+<div>
+
+  <div *ngIf="!chatStarted">
+    <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="customerName" [(ngModel)]="customer.customerName"
+          #customerName="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" class="form-control" name="location" [(ngModel)]="customer.location" #location="ngModel">
+      </div>
+
+
+      <div class="form-group">
+        <label>Beds</label>
+        <input type="text" class="form-control" name="beds" [(ngModel)]="customer.beds" #beds="ngModel">
+      </div>
+
+      <button type="submit" class="btn btn-success">submit</button>
+    </form>
+
+    <div>
+      <button class="btn btn-default" (click)="startChat()"> continue </button>
+    </div>
+  </div>
+  <br />
+
+
+  <div *ngIf="chatStarted">
+    <div *ngFor="let responseArray of chatHistory">
+      <div class="form-group">
+        <div *ngFor="let text of responseArray[0]">
+          <span>{{text}}</span>
+        </div>
+
+        <div>
+          <span>{{responseArray[1]}}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="chatStarted">
+    <label>Answer</label>
+    <input type="text" class="form-control" name="answer" [(ngModel)]="answer">
+
+    <div>
+      <button class="btn btn-default" (click)="getNextQuestion()"> continue </button>
+    </div>
+
+    <div>
+      <button class="btn btn-default" (click)="goBack()"> prev </button>
+    </div>
+  </div>
+
+  <div *ngIf ="foundSuggestion"> 
+      <div>
+          <button class="btn btn-default" (click)="fetchSuggestion()">suggest</button>
+      </div>
+        <div *ngFor="let suggestion of suggestionsArray">
+          <span>
+            {{suggestion}}
+          </span>
+        </div>
+  </div>
+ 
+
+  <!-- <div *ngIf="foundSuggestion">
+    <div>
+      <button class="btn btn-default" (click)="fetchSuggestion()">suggest</button>
+    </div>
+
+    <div *ngFor="let suggestion of suggestionsArray">
+      <span>
+        {{suggestion}}
+      </span>
+    </div> -->
+
+    <div>
+      <a class="nav-link" routerLink="register">
+        <span class="fa fa-navicon"></span> Register With Us
+      </a>
+    </div>
+
+
+<!-- 
+  </div> -->
+
+
+
+
+</div>
