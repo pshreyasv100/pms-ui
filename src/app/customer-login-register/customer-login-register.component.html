@@ -1,0 +1,22 @@
+
+<div>
+    <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="customer.name" #name="ngModel">
+        </div>
+    
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="customer.phone" #phone="ngModel">
+        </div>
+    
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+    
+    <div>
+        <a class="nav-link" routerLink="register">
+            <span class="btn btn-success">New User ? Register</span> 
+        </a>
+    </div>
+</div>

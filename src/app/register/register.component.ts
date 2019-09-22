@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   customer: CustomerDetails = {
-    centralPMSRequired: '',
+    name: '',
     email: '',
-    phone: '',
-    shippingAddress: ''
+    contact: '',
+    location: ''
   };
 
   formSubmitted: boolean = false;
@@ -29,9 +29,8 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    this.pmsService.registerUser(this.customer).subscribe((data : any) => {
-      this.response = data["content"];
-      this.router.navigate(['']);
+    this.pmsService.registerUser(this.customer).subscribe(() => {
+      this.router.navigate(['customer']);
     });
   }
 

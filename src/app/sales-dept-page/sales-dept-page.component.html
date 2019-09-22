@@ -1,0 +1,99 @@
+<div>
+    <h3>Search Customer Interests by Contact Number</h3>
+    <input type="text" class="form-control" name="contact" [(ngModel)]="contact">
+</div>
+
+<button class="btn btn-success" (click)="getCustomerRecommendations()">submit</button>
+
+<br />
+<br />
+
+<div style="background-color:wheat; color: black">
+    <div *ngFor="let suggestion of suggestionsArray">
+        <span>
+            {{suggestion}}
+        </span>
+    </div>
+</div>
+
+<br />
+<br />
+
+
+<div>
+    <h3>Get interested customers in a date Range (YYYY-MM-DD)</h3>
+    <div class="row">
+        <div class="col">
+            <span> From </span>
+            <input type="text" [(ngModel)]="fromDate">
+        </div>
+        <div class="col">
+            <span> To </span>
+            <input type="text" [(ngModel)]="toDate">
+        </div>
+    </div>
+
+
+    <button class="btn btn-success" (click)="getInterestedCustomers()">
+        <h4>Show</h4>
+    </button>
+    <button class="btn btn-danger" (click)="closeInterestedCustomersTable()">
+        <h4>Close</h4>
+    </button>
+
+</div>
+<br />
+<br />
+
+
+<div *ngIf="showInterestedCustomers">
+    <table class="table">
+        <thead>
+            <td> Contact</td>
+            <td>Name</td>
+            <td>Location</td>
+            <td>Email</td>
+        </thead>
+
+        <tbody *ngFor="let customer of interestedCustomers">
+            <tr>
+                <td>{{customer.contact}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.location}}</td>
+                <td>{{customer.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br />
+<br />
+
+<button class="btn btn-success" (click)="getCustomers()">
+    <h4>Get all customers</h4>
+</button>
+<button class="btn btn-danger" (click)="closeAllCustomersTable()">
+    <h4>Close</h4>
+</button>
+
+
+<div *ngIf="showCustomersTable">
+
+    <table class="table">
+        <thead>
+            <td> Contact</td>
+            <td>Name</td>
+            <td>Location</td>
+            <td>Email</td>
+        </thead>
+
+        <tbody *ngFor="let customer of allCustomers">
+            <tr>
+                <td>{{customer.contact}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.location}}</td>
+                <td>{{customer.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

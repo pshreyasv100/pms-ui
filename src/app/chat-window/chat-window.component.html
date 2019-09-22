@@ -1,1 +1,87 @@
-<app-message></app-message>
+<div>
+
+    <div *ngIf="!chatStarted">
+        <form (ngSubmit)="submit()" #customerForm="ngForm" class="customer-form" novalidate>
+
+            <div class="form-group">
+                <span> Enter Location of Hospital </span>
+                <input type="text" class="form-control" name="beds" [(ngModel)]="customer.location" #location="ngModel">
+            </div>
+
+
+            <div class="form-group">
+                <span> Enter Number of Beds Required </span>
+                <input type="text" class="form-control" name="beds" [(ngModel)]="customer.beds" #beds="ngModel">
+            </div>
+
+            <button type="submit" class="btn btn-success">submit</button>
+        </form>
+
+        <div>
+            <button class="btn btn-default" (click)="startChat()"> continue </button>
+        </div>
+    </div>
+    <br />
+
+
+    <div *ngIf="chatStarted">
+        <div *ngFor="let responseArray of chatHistory">
+            <div>
+                <div class="form-group">
+                    <div style="background-color: black; color:blanchedalmond ; text-align: center ; font-size: 24px">
+                        <span> You answered : </span>
+                        <span>{{responseArray[1]}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngFor="let text of responseArray[0]">
+                <div style="color: black; background-color:blanchedalmond ; text-align: center ; font-size: 24px">
+                    <span>{{text}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="chatStarted">
+
+        <div [hidden]="chatEnded">
+            <div>
+                <label>Answer</label>
+                <input type="text" class="form-control" name="answer" [(ngModel)]="answer">
+            </div>
+
+            <div>
+                <button class="btn btn-success" (click)="getNextQuestion()"> continue </button>
+            </div>
+        </div>
+
+        <br />
+
+        <div [hidden]="hidePreviousButton">
+            <button class="btn" style=" background-color:darkblue; color: white" (click)="goBack()"> prev </button>
+        </div>
+
+        <br />
+
+        <div class="row" [hidden] = "hideRecommendationButton">
+            <div class="col">
+                <button class="btn btn-success" (click)="fetchSuggestion()">Recommendations</button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-success" (click)="saveSuggestions()">Save Recommendations</button>
+            </div>
+        </div>
+
+
+        <div *ngFor="let product of recommendationsArray">
+            <span>
+                {{product}}
+            </span>
+        </div>
+
+
+    </div>
+</div>

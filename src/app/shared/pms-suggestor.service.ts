@@ -1,27 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Acquity } from './acquity';
-import { $ } from 'protractor';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { CustomerDetails } from './customerDetails';
+import { Recommendation } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PmsSuggestorService {
 
-
-  private acquityDetailsURL: string = "http://localhost:8080/getdetails";
+  private chatURL: string = "http://localhost:8080/chat";
   private nextQuestionURL: string = "http://localhost:8080/ask";
   private suggestionURL: string = "http://localhost:8080/suggest";
-  private registerUserURL: string = "http://localhost:8080/getfurtherdetails";
+  private registerUserURL: string = "http://localhost:8080/register";
+  private verifyUserURL: string = "http://localhost:8080/verifyUser";
+
+  private saveSuggestionsURL: string = "http://localhost:8080/save";
 
 
   constructor(private http: HttpClient) { }
 
-  determineAcquity(data: any): any {
-    let params = new HttpParams().set("name", data.customerName).set("location", data.location).set("beds", data.beds);
-    return this.http.get(this.acquityDetailsURL, { params: params });
+  verifyDetails(data: any): any {
+    let params = new HttpParams().set("name", data.name).set("contact", data.phone);
+    return (this.http.get(this.verifyUserURL, { params: params }));
+  }
+
+
+  startChat(data: any): any {
+    let params = new HttpParams().set("location",data.location).set("beds", data.beds);
+    return this.http.get(this.chatURL, { params: params });
   }
 
 
@@ -39,11 +45,15 @@ export class PmsSuggestorService {
   }
 
 
-  registerUser(userDetails: CustomerDetails): any {
+  saveSuggestions(recommendations: Recommendation): any {
+    debugger
+    return this.http.post(this.saveSuggestionsURL, recommendations);
+  }
 
-    let params = new HttpParams().set("centralPMS", userDetails.centralPMSRequired)
-    .set("email", userDetails.email).set("phone", userDetails.phone).set("shippingaddress",userDetails.shippingAddress);
-    return this.http.get(this.registerUserURL, { params: params });
+
+
+  registerUser(customer: CustomerDetails): any {
+    return this.http.post(this.registerUserURL, customer);
   }
 
 }

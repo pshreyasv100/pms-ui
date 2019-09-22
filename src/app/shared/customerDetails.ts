@@ -1,6 +1,6 @@
 export interface CustomerDetails{
-    centralPMSRequired: string;
+    name: string;
     email: string;
-    phone: string;
-    shippingAddress: string;
+    contact: string;
+    location: string;
 }

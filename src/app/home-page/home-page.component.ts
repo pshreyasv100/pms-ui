@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { PmsSuggestorService } from '../shared/pms-suggestor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -12,4 +15,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  submit() {}
 }

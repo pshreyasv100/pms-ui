@@ -8,22 +8,24 @@ import { HttpClientModule } from   '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerDetailsFormComponent } from './customer-details-form/customer-details-form.component';
-import { MessageComponent } from './message/message.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { RegisterComponent } from './register/register.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { ProductsListComponent } from './products-list/products-list.component';
+import { SalesDeptPageComponent } from './sales-dept-page/sales-dept-page.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { CustomerLoginRegisterComponent } from './customer-login-register/customer-login-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerDetailsFormComponent,
-    MessageComponent,
     ChatWindowComponent,
     RegisterComponent,
     HomePageComponent,
-    ProductsListComponent
+    SalesDeptPageComponent,
+    WelcomeComponent,
+    OrderHistoryComponent,
+    CustomerLoginRegisterComponent,
   ],
   imports: [
     BrowserModule,
