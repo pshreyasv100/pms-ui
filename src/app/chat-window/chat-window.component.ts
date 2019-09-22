@@ -114,7 +114,8 @@ export class ChatWindowComponent implements OnInit {
     products.splice(0, 1);
     this.recommendations.products = products;
     this.pmsService.saveSuggestions(this.recommendations);
-    this.router.navigate(['customer']);
+    this.router.navigate(['']);
+    
   }
 
 

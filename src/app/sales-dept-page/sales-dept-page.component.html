@@ -8,13 +8,8 @@
 <br />
 <br />
 
-<div style="background-color:wheat; color: black">
-    <div *ngFor="let suggestion of suggestionsArray">
-        <span>
-            {{suggestion}}
-        </span>
-    </div>
-</div>
+
+<app-product-list [recommendations]= "suggestionsArray"></app-product-list>
 
 <br />
 <br />

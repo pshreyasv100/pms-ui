@@ -1,22 +1,7 @@
-<table class="table">
-        <thead>
-            <td>Product</td>
-            <td>Image</td>
-        </thead>
+<app-product-list [recommendations]= "suggestionsArray"></app-product-list>
 
-        <div *ngFor="let product of suggestionsArray">
-            <tr>
-                <td>
-                    <div>
-                        {{product}}
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <img src="assets/products_images/{{product}}.jpg" />
-                    </div>
-                </td>
-            </tr>
-        </div>
-
-    </table>
+<div>
+    <div class>
+        <button class="btn btn-success" (click)="goBack()">Back</button>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <td>Product</td>
+        <td>Image</td>
+    </thead>
+
+    <div *ngFor="let product of recommendations">
+        <tr>
+            <td>
+                <div>
+                    {{product}}
+                </div>
+            </td>
+            <td>
+                <div>
+                    <img src="assets/products_images/{{product}}.jpg" />
+                </div>
+            </td>
+        </tr>
+    </div>
+
+</table>

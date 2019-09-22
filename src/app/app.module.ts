@@ -15,6 +15,7 @@ import { SalesDeptPageComponent } from './sales-dept-page/sales-dept-page.compon
 import { WelcomeComponent } from './welcome/welcome.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { CustomerLoginRegisterComponent } from './customer-login-register/customer-login-register.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CustomerLoginRegisterComponent } from './customer-login-register/custom
     WelcomeComponent,
     OrderHistoryComponent,
     CustomerLoginRegisterComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/data.service';
 import { SalesServiceService } from '../shared/sales-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
@@ -14,14 +15,25 @@ export class OrderHistoryComponent implements OnInit {
  suggestionsArray: String[] = [];
 
   constructor(private data: DataService,
-    private salesService: SalesServiceService) { }
+    private salesService: SalesServiceService,
+    private router: Router) { }
 
   ngOnInit() {
     this.data.currentContact.subscribe(contact => this.contact = contact);
     this.salesService.getUserHistory(this.contact).subscribe((data: any) => {
-      this.suggestionsArray = data["products"];
+   
+      for(var product of data["products"]){
+        this.suggestionsArray.push(product.toUpperCase());
+      }
+      console.log(this.suggestionsArray);
     });
+
+  
+
     
   }
 
+  goBack(){
+    this.router.navigate(['welcome']);
+  }
 }
