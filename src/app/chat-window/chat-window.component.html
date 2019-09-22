@@ -65,7 +65,7 @@
 
         <br />
 
-        <div class="row" [hidden] = "hideRecommendationButton">
+        <div class="row" [hidden]="hideRecommendationButton">
             <div class="col">
                 <button class="btn btn-success" (click)="fetchSuggestion()">Recommendations</button>
             </div>
@@ -76,12 +76,31 @@
         </div>
 
 
-        <div *ngFor="let product of recommendationsArray">
-            <span>
-                {{product}}
-            </span>
+        <div *ngIf="showRecommendations">
+
+            <table class="table">
+                <thead>
+                    <td>Product</td>
+                    <td>Image</td>
+                </thead>
+
+                <div *ngFor="let product of recommendationsPics">
+                    <tr>
+                        <td>
+                            <div>
+                                {{product}}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <img src="assets/products_images/{{product}}.jpg" />
+                            </div>
+                        </td>
+                    </tr>
+                </div>
+
+            </table>
+
         </div>
-
-
     </div>
 </div>

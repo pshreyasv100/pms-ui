@@ -28,17 +28,17 @@ export class ChatWindowComponent implements OnInit {
     products: []
   };
   recommendationsArray: string[] = [];
+  recommendationsPics: string[];
 
-  foundSuggestion: boolean = false;
+  showRecommendations: boolean = false;
   chatStarted: boolean = false;
   chatEnded: boolean = false;
   hidePreviousButton: boolean = true;
   hideRecommendationButton: boolean = true;
 
-  errorMessage: string;
 
   @ViewChild('customerForm', { static: false }) customerForm: NgForm;
-  
+
 
   constructor(private pmsService: PmsSuggestorService,
     private router: Router) { }
@@ -68,19 +68,18 @@ export class ChatWindowComponent implements OnInit {
 
     this.hidePreviousButton = (this.chatHistory.length > 0) ? false : true;
     this.hideRecommendationButton = (this.chatHistory.length > 0) ? false : true;;
-  
+
     this.answer = '';
     this.pmsService.getNextQuestion(this.previousAnswers.join(',')).subscribe((data: any) => {
-      
+
       this.responseArray = data["content"].split('\n');
       this.chatHistory.push([this.responseArray, currentAnswer]);
 
-      if(data["content"] == "I have arrived at a suggestion for you"){
+      if (data["content"] == "I have arrived at a suggestion for you") {
         this.chatEnded = true;
       }
 
       this.chatStarted = true;
-      this.foundSuggestion = true;
     });
   }
 
@@ -89,7 +88,7 @@ export class ChatWindowComponent implements OnInit {
 
     this.hideRecommendationButton = (this.chatHistory.length > 1) ? false : true;
     this.hidePreviousButton = (this.chatHistory.length > 1) ? false : true;
-    if(this.chatEnded){
+    if (this.chatEnded) {
       this.chatEnded = false;
     }
     this.previousAnswers.pop();
@@ -98,9 +97,13 @@ export class ChatWindowComponent implements OnInit {
 
 
   fetchSuggestion() {
-    this.chatEnded = true;
     this.pmsService.getSuggestion().subscribe((data: any) => {
-      this.recommendationsArray = data["content"].split('\n');
+    
+      this.recommendationsArray = data["content"].split('\n');   
+      this.recommendationsPics = Object.assign([], this.recommendationsArray);
+      this.recommendationsPics.pop();
+      this.recommendationsPics.splice(0, 1);
+      this.showRecommendations = true;
     });
   }
 
@@ -108,7 +111,7 @@ export class ChatWindowComponent implements OnInit {
   saveSuggestions() {
     let products = Object.assign([], this.recommendationsArray);
     products.pop();
-    products.splice(0,1);
+    products.splice(0, 1);
     this.recommendations.products = products;
     this.pmsService.saveSuggestions(this.recommendations);
     this.router.navigate(['customer']);
