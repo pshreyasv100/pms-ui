@@ -3,13 +3,19 @@
     <input type="text" class="form-control" name="contact" [(ngModel)]="contact">
 </div>
 
-<button class="btn btn-success" (click)="getCustomerRecommendations()">submit</button>
+<div class="row">
+    <button class="btn btn-success" (click)="getCustomerRecommendations()"><h4>Show</h4></button>
+    <button class="btn btn-danger" (click)="closeCustomersInterestsTable()">
+        <h4>Close</h4>
+    </button>
+</div>
+
 
 <br />
 <br />
 
 
-<app-product-list [recommendations]= "suggestionsArray"></app-product-list>
+<app-product-list [recommendations]="suggestionsArray" *ngIf="showCustomersInterestsTable"></app-product-list>
 
 <br />
 <br />

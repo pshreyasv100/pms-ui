@@ -9,10 +9,10 @@ import { Recommendation } from './product';
 export class PmsSuggestorService {
 
   private chatURL: string = "http://localhost:8080/chat";
-  private nextQuestionURL: string = "http://localhost:8080/ask";
+  private nextQuestionURL: string = "http://localhost:8080/question";
   private suggestionURL: string = "http://localhost:8080/suggest";
   private registerUserURL: string = "http://localhost:8080/register";
-  private verifyUserURL: string = "http://localhost:8080/verifyUser";
+  private verifyUserURL: string = "http://localhost:8080/verify/user";
 
   private saveSuggestionsURL: string = "http://localhost:8080/save";
 

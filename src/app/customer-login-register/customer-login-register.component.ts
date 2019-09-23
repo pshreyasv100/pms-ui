@@ -17,6 +17,8 @@ export class CustomerLoginRegisterComponent implements OnInit {
     name: ''
   }
 
+  authenticUser: boolean = true;
+
 
   @ViewChild('customerForm', { static: false }) customerForm: NgForm;
 
@@ -36,6 +38,9 @@ export class CustomerLoginRegisterComponent implements OnInit {
         this.data.changeContact(this.customer.phone);
         this.router.navigate(['/welcome']);
       }   
+      else{
+        this.authenticUser = false;
+      }
     });
 
   }

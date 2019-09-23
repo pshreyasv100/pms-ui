@@ -18,6 +18,7 @@ export class SalesDeptPageComponent implements OnInit {
 
   showCustomersTable: boolean = false;
   showInterestedCustomers: boolean =  false;
+  showCustomersInterestsTable: boolean = false;
 
   fromDate: string;
   toDate: string;
@@ -30,6 +31,7 @@ export class SalesDeptPageComponent implements OnInit {
   }
 
   getCustomerRecommendations() {
+    this.showCustomersInterestsTable = true;
     this.salesService.getUserHistory(this.contact).subscribe((data: any) => {
       this.suggestionsArray = data["products"];
       console.log(data);
@@ -60,6 +62,11 @@ export class SalesDeptPageComponent implements OnInit {
 
   closeInterestedCustomersTable(){
     this.showInterestedCustomers = false;
+  }
+
+
+  closeCustomersInterestsTable(){
+    this.showCustomersInterestsTable = false;
   }
 
 }

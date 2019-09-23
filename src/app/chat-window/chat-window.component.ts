@@ -113,7 +113,9 @@ export class ChatWindowComponent implements OnInit {
     products.pop();
     products.splice(0, 1);
     this.recommendations.products = products;
-    this.pmsService.saveSuggestions(this.recommendations);
+    this.pmsService.saveSuggestions(this.recommendations).subscribe((data: any) => {
+      console.log(data);
+    });
     this.router.navigate(['']);
     
   }
