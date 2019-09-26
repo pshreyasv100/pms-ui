@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { PmsSuggestorService } from '../shared/pms-suggestor.service';
-import { CustomerDetails } from '../shared/customerDetails';
+import { PmsSuggestorService } from '../shared/services/pms-suggestor.service';
+import { CustomerDetails } from '../shared/model/customerDetails';
 import { Router } from '@angular/router';
 
 @Component({

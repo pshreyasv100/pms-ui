@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SalesServiceService } from '../shared/sales-service.service';
-import { CustomerDetails } from '../shared/customerDetails';
+import { SalesServiceService } from '../shared/services/sales-service.service';
+import { CustomerDetails } from '../shared/model/customerDetails';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales-dept-page',
@@ -25,7 +26,7 @@ export class SalesDeptPageComponent implements OnInit {
 
 
 
-  constructor(private salesService: SalesServiceService) { }
+  constructor(private salesService: SalesServiceService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -67,6 +68,13 @@ export class SalesDeptPageComponent implements OnInit {
 
   closeCustomersInterestsTable(){
     this.showCustomersInterestsTable = false;
+  }
+
+
+
+  
+  goBack(){
+    this.router.navigate(['']);
   }
 
 }

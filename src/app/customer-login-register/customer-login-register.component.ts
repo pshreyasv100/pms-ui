@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { PmsSuggestorService } from '../shared/pms-suggestor.service';
+import { PmsSuggestorService } from '../shared/services/pms-suggestor.service';
 import { Router } from '@angular/router';
-import { DataService } from '../shared/data.service';
+import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-customer-login-register',

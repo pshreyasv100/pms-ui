@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { PmsSuggestorService } from '../shared/pms-suggestor.service';
-import { Recommendation } from '../shared/product';
+import { PmsSuggestorService } from '../shared/services/pms-suggestor.service';
+import { Recommendation } from '../shared/model/product';
 import { Router } from '@angular/router';
 
 @Component({
@@ -115,9 +115,15 @@ export class ChatWindowComponent implements OnInit {
     this.recommendations.products = products;
     this.pmsService.saveSuggestions(this.recommendations).subscribe((data: any) => {
       console.log(data);
+      alert("suggestions have been saved");
     });
     this.router.navigate(['']);
     
+  }
+
+
+  exitChat(){
+    this.router.navigate(['welcome']);
   }
 
 

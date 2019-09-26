@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/data.service';
-import { SalesServiceService } from '../shared/sales-service.service';
+import { DataService } from '../shared/services/data.service';
+import { SalesServiceService } from '../shared/services/sales-service.service';
 import { Router } from '@angular/router';
 
 @Component({

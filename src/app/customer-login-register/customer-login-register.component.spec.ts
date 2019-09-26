@@ -19,7 +19,4 @@ describe('CustomerLoginRegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
